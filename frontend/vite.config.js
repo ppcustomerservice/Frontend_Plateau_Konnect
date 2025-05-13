@@ -1,23 +1,24 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
-import path from 'path'
 
 export default defineConfig({
-  root: path.resolve(__dirname, 'frontend'), // path to your app folder
+  root: '.', // Make sure it's set to current folder if vite.config.js is inside frontend/
   plugins: [react()],
   server: {
     host: '0.0.0.0',
     port: process.env.PORT || 3000,
     proxy: {
       '/api': {
-        target: 'https://plateau-konnect-ktp6.onrender.com', // fixed typo in https
+        target: 'https://plateau-konnect-ktp6.onrender.com', // Fix typo: remove extra 'h'
         changeOrigin: true,
         secure: false,
       },
     },
   },
   build: {
-    outDir: path.resolve(__dirname, 'dist'), // output build here
-    emptyOutDir: true,
+    rollupOptions: {
+      input: 'index.html', // Tell Vite where to find entry HTML
+    },
+    outDir: 'dist', // Optional: explicitly specify output folder
   },
 })
