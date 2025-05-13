@@ -8,8 +8,10 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "postbuild": "npm run copy-build-to-server",
-    "copy-build-to-server": "xcopy /E /Y dist ..\\server\\public\\"
+  "postbuild": "npm run copy-build-to-server",
+  "copy-build-to-server": "cp -r dist/* ../server/public/"
+}
+
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
