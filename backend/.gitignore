@@ -1,5 +1,0 @@
-/node_modules
-.env
-/log/combined.log
-/log/error.log
-/log/email-error.log
