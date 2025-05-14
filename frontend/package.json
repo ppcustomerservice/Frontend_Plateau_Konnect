@@ -9,7 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "postbuild": "npm run copy-build-to-server",
-    "copy-build-to-server": "cp -r dist/* ../server/public/"
+    "copy-build-to-server": "[ -d ../server/public ] && cp -r dist/* ../server/public || echo 'No server directory in Amplify, skipping copy'"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
